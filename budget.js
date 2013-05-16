@@ -16,9 +16,9 @@ function bimbiComuni(){
 	// combacia con le cifre ufficiali (altrimenti mi risultano molti piu' esclusi)
 	var costo_bambino_comunale = 35500000 / 5327 + 1100; // 7764
 	
+	// numeri assoluti
 	var budget_pari = document.getElementById('euroPari').value;
 	var posti_persi = Math.round(budget_pari * 1000 / costo_bambino_comunale);
-	
 	var posti_comunali = bambini_comunali - posti_persi;
 	var posti_esclusi = totale_bambini - (bambini_statali + posti_comunali + bambini_paritarie);
 	var ammanco = Math.round(costo_bambino_comunale * posti_esclusi);
@@ -27,11 +27,19 @@ function bimbiComuni(){
 	document.getElementById('numComunali').value = posti_comunali - 55; // 55 sono posti "persi naturalmente" per questioni logistiche (scuole troppo lontane etc)
 	document.getElementById('numEsclusi').value = posti_esclusi;
 	document.getElementById('euroRetta').value = euroRetta;
-	document.getElementById('pariPerc').value = Math.round((euroRetta - 304.7) / 304.7 * 100);
-	document.getElementById('euroAmmanco').value = ammanco;
-	document.getElementById('percEsclusi').value = Math.round((posti_esclusi - 143)  / 143 * 100);
 	document.getElementById('costoPerBimbo').value = costo_bambino_comunale;
-	document.getElementById('numComunaliVar').value = document.getElementById('numComunali').value - 5327 + 55;
+	document.getElementById('euroAmmanco').value = ammanco;
+	
+	// variations
+	var pariPerc = Math.round((euroRetta - 304.7) / 304.7 * 100);
+	if(pariPerc > 0){ pariPerc = "+" + pariPerc; };
+	var percEsclusi = Math.round((posti_esclusi - 143)  / 143 * 100);
+	if(percEsclusi > 0){ percEsclusi = "+" + percEsclusi; };
+	var numComunaliVar = document.getElementById('numComunali').value - 5327 + 55;
+	if(numComunaliVar > 0){ numComunaliVar = "+" + numComunaliVar; };
+	document.getElementById('pariPerc').value = pariPerc;
+	document.getElementById('percEsclusi').value = percEsclusi;
+	document.getElementById('numComunaliVar').value = numComunaliVar;
 }
 
 function resetBudget(){
