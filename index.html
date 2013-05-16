@@ -1,95 +1,16 @@
 <html>
 <head><title>Materne a Bologna - fai tu il budget!</title>
 <script type='text/javascript' src='html5slider.js'></script>
-<script type='text/javascript'>
-
-function bimbiComuni(){
-
-	var totale_bambini = 8988 - 225 + 143; // totale - non-convenzionate + esclusi 
-	var bambini_statali = 1611;
-	var bambini_paritarie = 1825;
-	var bambini_comunali = 5327 + 143; // posti comunali + esclusi.
-	
-	var retta_media = 3047 + (1110000/bambini_paritarie);
-	var costo_bambino_comunale = 35500000 / 5327 + 1100; // 7600-something. Arrotondato per eccesso per calibrare gli arrotondamenti successivi.
-	
-	var budget_pari = document.getElementById('euroPari').value;
-	
-	var posti_persi = Math.round(budget_pari * 1000 / costo_bambino_comunale);
-	var posti_comunali = bambini_comunali - posti_persi;
-	var posti_esclusi = totale_bambini - (bambini_statali + posti_comunali + bambini_paritarie);
-	var ammanco = Math.round(costo_bambino_comunale * posti_esclusi);
-	var euroRetta = Math.round(retta_media - (budget_pari / bambini_paritarie * 1000)) / 10;
-	document.getElementById('euroPariLabel').value = budget_pari / 1000;
-	document.getElementById('numComunali').value = posti_comunali;
-	document.getElementById('numEsclusi').value = posti_esclusi;
-	document.getElementById('euroRetta').value = euroRetta;
-	document.getElementById('pariPerc').value = Math.round((euroRetta - 304.7) / 304.7 * 100);
-	document.getElementById('euroAmmanco').value = ammanco;
-	document.getElementById('percEsclusi').value = Math.round((posti_esclusi - 143)  / 143 * 100);
-}
-
-function resetBudget(){
-	document.getElementById('euroPari').value = 1110;
-	bimbiComuni();
-}
-</script>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
-<style>
-body {
-	background-image: url('gradient.png');
-	background-repeat: repeat-x;
-	background-position: top left;
-	margin:0; 
-	border:0; 
-	padding:20px; 
-	font-family: Helvetica, Verdana, Arial, sans-serif;
-}
-h1 { 
-	color: #006666; 
-	font-family: 'Vollkorn', Georgia, serif; 
-	font-size:300%; 
-	margin-bottom:0px; 
-	padding-bottom: 0px;
-}
-.intro { 
-	margin: 14px; 
-}
-fieldset { 
-	margin:0; 
-	padding:10px; 
-	border-radius: 10px; 
-	border: solid 3px #4EB1B1; 
-}
-input { background-color: transparent;}
-#pariPerc, #euroPariLabel, #numComunali, #numEsclusi, #euroRetta, #euroAmmanco, #percEsclusi  { 
-	border:0; padding:0; margin:0; 
-	text-align: right; 
-	font-family: Helvetica, Verdana, Arial, sans-serif; 
-	font-size: medium;
-}
-#euroRetta, #euroPariLabel, #percEsclusi { 
-	text-align: right; 
-	width: 50px;
-}
-#reset { 
-	border: solid 2px #4EB1B1; 
-	border-radius: 5px; 
-	background-image: url('gradient.png');
-	background-repeat: repeat-x;
-	background-position: top left;
-	font-size: medium; 
-	font-weight: bold;
-	color: white;
-}
-</style>
+<script type='text/javascript' src='budget.js'></script>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn" />
+<link rel="stylesheet" type="text/css" href="index.css" />
 </head>
 <body>
 
 <h1>Materne a Bologna - fai tu il budget!</h1>
 <div class="intro">Questo &egrave; un semplice strumento che mostra la relazione diretta tra contributi destinati alle scuole paritarie e posti
 "persi" nelle materne pubbliche, pur essendo partito come esperimento per vedere quanto le rette paritarie soffrirebbero dal perdere i contributi  comunali 
-(assumendo che non trovino altrove fondi equivalenti).<br /><br />Lo strumento cerca di essere pi&ugrave; imparziale possibile, <a href="mailto:g.lacava@gmail.com">ogni contributo &egrave; ben accetto</a>. Funziona meglio in Chrome, Safari e Firefox.<br /><br />
+(assumendo che non trovino altrove fondi equivalenti).<br /><br />Lo strumento cerca di essere pi&ugrave; imparziale possibile, <a href="https://github.com/toyg/bologna">ogni contributo &egrave; ben accetto</a>. Funziona meglio in Chrome, Safari e Firefox.<br /><br />
 
 Prova tu a fare il budget!</div>
 
@@ -99,7 +20,7 @@ Prova tu a fare il budget!</div>
 <div class="instructions">Clicca sullo slider, tieni premuto e sposta l'indicatore per aumentare o diminuire i contributi alle materne paritarie, poi guarda come cambiano gli altri fattori. <br /><span style="font-size:x-small;">(Nota: se non si vede lo slider, cambia il numero nel primo campo e clicca ovunque sulla pagina; il valore &egrave; in migliaia di euro.)</span><br /><br /></div>
 <label for="euroPari">Contributi a Paritarie</label>: <input type="range" value="1110" min="0" max="2220" id="euroPari" onchange="javascript:bimbiComuni();" />
 <input type="text" value="1.11" id="euroPariLabel" size="3" readonly/> milioni di Euro all'anno<br /><br />
-
+<label for="costoPerBimbo">Quanto costa un posto comunale</label>: <input type="text" id="costoPerBimbo" size="4" readonly /> Euro all'anno <span style="font-size:x-small;">(sovrastima<a href="#sovrastima">*</a>)</span><br /><br />
 <label for="numComunali">Posti in Comunali</label>: <input type="text" id="numComunali" value="5327" size="4" readonly /><br /><br />
 
 <label for="euroRetta">Retta media in Paritaria</label>: <input type="text" id="euroRetta" value="3047" size="4" readonly/> Euro al mese (variazione: <input type="text" id="pariPerc" size="3" value="0" readonly>%) <br /><br />
@@ -109,12 +30,12 @@ Prova tu a fare il budget!</div>
 
 <label for="euroAmmanco">Ammanco necessario per coprire gli esclusi</label>: <input type="text" id="euroAmmanco" value="0" size="7" readonly /> Euro all'anno<br /><br />
 <script type="text/javascript">bimbiComuni();</script>
-<input type="button" id="reset" value="Ricomincia" onclick="javascript:resetBudget();" />
+<input type="button" id="reset" value="Ricomincia" onclick="resetBudget();" />
 </fieldset>
 
 </form>
 
 <div style="font-size:small;">Dati: <a href="http://www.comune.bologna.it/news/come-fatta-la-scuola-dell-infanzia-bologna">Comune di Bologna</a> per il 2013. Retta media paritaria calcolata da <a href="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash3/945989_525119184203867_2136608247_n.png">relazione comunale 2011/12</a>, escludendo i due casi estremi (KinderHaus e SacroCuore).<br />
-<span class="notaFinale">Nota: il costo per bambino "comunale" viene tenuto fisso a circa 7764 euro l'anno, calcolato dai dati comunali pi&ugrave; una buona sovrastima (dati "ufficiosi" parlano di 6800).</span></div>
+<a name="sovrastima"><span style="font-size:x-small">Il costo per bambino &egrave; sovrastimato del 15% circa per via di arrotondamenti sul dato aggregato fornito dal Comune.</span></a></div>
 </body>
 </html>
