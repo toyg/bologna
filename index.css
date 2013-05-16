@@ -24,13 +24,13 @@ fieldset {
 	border: solid 3px #4EB1B1; 
 }
 input { background-color: transparent;}
-#pariPerc, #euroPariLabel, #numComunali, #numEsclusi, #euroRetta, #euroAmmanco, #percEsclusi, #costoPerBimbo  { 
+#pariPerc, #euroPariLabel, #numComunali, #numComunaliVar, #numEsclusi, #euroRetta, #euroAmmanco, #percEsclusi, #costoPerBimbo  { 
 	border:0; padding:0; margin:0; 
 	text-align: right; 
 	font-family: Helvetica, Verdana, Arial, sans-serif; 
 	font-size: medium;
 }
-#euroRetta, #euroPariLabel, #percEsclusi { 
+#euroRetta, #euroPariLabel, #percEsclusi, #numComunaliVar { 
 	text-align: right; 
 	width: 50px;
 }
