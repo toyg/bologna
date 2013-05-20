@@ -26,15 +26,15 @@ per semplici osservazioni, <a href="#disqus_thread">si pu&ograve; commentare in 
 <div id="instructions">Clicca sullo slider, tieni premuto e sposta l'indicatore per aumentare o diminuire i contributi alle materne paritarie, poi guarda come cambiano gli altri fattori. <br /><span style="font-size:x-small;">(Nota: se non si vede lo slider, cambia il numero nel primo campo e clicca ovunque sulla pagina; il valore &egrave; in migliaia di euro.)</span></div>
 <div id="fields">
 <ul><li><label for="euroPari">Contributi a Paritarie</label>: <input type="range" value="1110" min="0" max="2220" id="euroPari" onchange="javascript:bimbiComuni();" />
-<input type="text" value="1.11" id="euroPariLabel" size="5" readonly/> milioni €/anno</li>
+<input type="text" value="1.11" id="euroPariLabel" size="5" readonly/> milioni &euro;/anno</li>
 <li><label for="numComunali">Posti in Comunali</label>: <input type="text" id="numComunali" value="5327" size="4" readonly />
 <span class="highlight">variazione <input type="text" id="numComunaliVar" size="5" value="0" readonly></span></li>
 <li><label for="numEsclusi">Bambini senza posto</label>: <input type="text" id="numEsclusi" value="143" size="3" readonly/>
 <span class="highlight">variazione <input type="text" id="percEsclusi" value="0" size="5" readonly /></span></li>
-<li><label for="euroAmmanco">Fondi ulteriormente necessari per coprire gli esclusi</label>: <input type="text" id="euroAmmanco" value="0" size="7" readonly /> €/anno</li>
-<li><label for="euroRetta">Retta media in Paritaria</label>: <input type="text" id="euroRetta" value="3047" size="4" readonly/> €/mese
+<li><label for="euroAmmanco">Fondi ulteriormente necessari per coprire gli esclusi</label>: <input type="text" id="euroAmmanco" value="0" size="7" readonly /> &euro;/anno</li>
+<li><label for="euroRetta">Retta media in Paritaria</label>: <input type="text" id="euroRetta" value="3047" size="4" readonly/> &euro;/mese
 <span class="highlight">variazione: <input type="text" id="pariPerc" size="5" value="0" readonly></span></li>
-<li><label for="costoPerBimbo">Quanto costa un posto comunale</label>: <input type="text" id="costoPerBimbo" size="4" value="0" readonly /> €/anno <span style="font-size:x-small;">(sovrastima<a href="#sovrastima">*</a>)</span></li>
+<li><label for="costoPerBimbo">Quanto costa un posto comunale</label>: <input type="text" id="costoPerBimbo" size="4" value="0" readonly /> &euro;/anno <span style="font-size:x-small;">(sovrastima<a href="#sovrastima">*</a>)</span></li>
 </ul>
 <input type="button" id="reset" value="Ricomincia" onclick="resetBudget();" />
 </div>
