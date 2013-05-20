@@ -1,4 +1,7 @@
+<!DOCTYPE html>
 <html>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE; chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head><title>Materne a Bologna - fai tu il budget!</title>
 <script type='text/javascript' src='html5slider.js'></script>
 <script type='text/javascript' src='budget.js'></script>
@@ -6,39 +9,45 @@
 <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
 <body>
-
 <h1>Materne a Bologna - fai tu il budget!</h1>
-<div class="intro">Questo &egrave; un semplice strumento che mostra la relazione diretta tra contributi destinati alle scuole paritarie e posti
+<p id="browsers">Funziona meglio in Chrome, Safari e Firefox.</p>
+<div id="intro">
+<p>Questo &egrave; un semplice strumento che mostra la relazione diretta tra contributi destinati alle scuole paritarie e posti
 "persi" nelle materne pubbliche, pur essendo partito come esperimento per vedere quanto le rette paritarie soffrirebbero dal perdere i contributi comunali 
-(assumendo che non trovino altrove fondi equivalenti).<br /><br />Lo strumento cerca di essere pi&ugrave; imparziale possibile, 
+(assumendo non trovino altrove fondi equivalenti).</p>
+<p>Lo strumento cerca di essere pi&ugrave; imparziale possibile, 
 <a href="https://github.com/toyg/bologna">ogni contributo al codice &egrave; ben accetto</a>; 
-per semplici osservazioni, <a href="#disqus_thread">si pu&ograve; commentare in fondo alla pagina</a>. 
-<span style="font-size:x-small;">Funziona meglio in Chrome, Safari e Firefox.</span><br /><br />
-
-Prova tu a fare il budget!</div>
+per semplici osservazioni, <a href="#disqus_thread">si pu&ograve; commentare in fondo alla pagina</a>.</p>
+<p id="cta">Prova tu a fare il budget!</p>
+</div>
 
 <form name="budget" id="budget">
-
 <fieldset id="mkbudget">
-<div class="instructions">Clicca sullo slider, tieni premuto e sposta l'indicatore per aumentare o diminuire i contributi alle materne paritarie, poi guarda come cambiano gli altri fattori. <br /><span style="font-size:x-small;">(Nota: se non si vede lo slider, cambia il numero nel primo campo e clicca ovunque sulla pagina; il valore &egrave; in migliaia di euro.)</span><br /><br /></div>
-<label for="euroPari">Contributi a Paritarie</label>: <input type="range" value="1110" min="0" max="2220" id="euroPari" onchange="javascript:bimbiComuni();" />
-<input type="text" value="1.11" id="euroPariLabel" size="3" readonly/> milioni di Euro all'anno<br /><br />
-<label for="numComunali">Posti in Comunali</label>: <input type="text" id="numComunali" value="5327" size="4" readonly /> (variazione: <input type="text" id="numComunaliVar" size="3" value="0" readonly>)<br /><br />
-<label for="numEsclusi">Bambini senza posto</label>: <input type="text" id="numEsclusi" value="143" size="3" readonly/>
- (variazione: <input type="text" id="percEsclusi" value="0" size="4" readonly />%)<br /><br />
-<label for="euroAmmanco">Fondi ulteriormente necessari per coprire gli esclusi</label>: <input type="text" id="euroAmmanco" value="0" size="7" readonly /> Euro all'anno<br /><br />
-
-<label for="euroRetta">Retta media in Paritaria</label>: <input type="text" id="euroRetta" value="3047" size="4" readonly/> Euro al mese (variazione: <input type="text" id="pariPerc" size="3" value="0" readonly>%) <br /><br />
-<label for="costoPerBimbo">Quanto costa un posto comunale</label>: <input type="text" id="costoPerBimbo" size="4" readonly /> Euro all'anno <span style="font-size:x-small;">(sovrastima<a href="#sovrastima">*</a>)</span><br /><br />
-
-<script type="text/javascript">bimbiComuni();</script>
+<div id="instructions">Clicca sullo slider, tieni premuto e sposta l'indicatore per aumentare o diminuire i contributi alle materne paritarie, poi guarda come cambiano gli altri fattori. <br /><span style="font-size:x-small;">(Nota: se non si vede lo slider, cambia il numero nel primo campo e clicca ovunque sulla pagina; il valore &egrave; in migliaia di euro.)</span></div>
+<div id="fields">
+<ul><li><label for="euroPari">Contributi a Paritarie</label>: <input type="range" value="1110" min="0" max="2220" id="euroPari" onchange="javascript:bimbiComuni();" />
+<input type="text" value="1.11" id="euroPariLabel" size="5" readonly/> milioni €/anno</li>
+<li><label for="numComunali">Posti in Comunali</label>: <input type="text" id="numComunali" value="5327" size="4" readonly />
+<span class="highlight">variazione <input type="text" id="numComunaliVar" size="5" value="0" readonly></span></li>
+<li><label for="numEsclusi">Bambini senza posto</label>: <input type="text" id="numEsclusi" value="143" size="3" readonly/>
+<span class="highlight">variazione <input type="text" id="percEsclusi" value="0" size="5" readonly /></span></li>
+<li><label for="euroAmmanco">Fondi ulteriormente necessari per coprire gli esclusi</label>: <input type="text" id="euroAmmanco" value="0" size="7" readonly /> €/anno</li>
+<li><label for="euroRetta">Retta media in Paritaria</label>: <input type="text" id="euroRetta" value="3047" size="4" readonly/> €/mese
+<span class="highlight">variazione: <input type="text" id="pariPerc" size="5" value="0" readonly></span></li>
+<li><label for="costoPerBimbo">Quanto costa un posto comunale</label>: <input type="text" id="costoPerBimbo" size="4" value="0" readonly /> €/anno <span style="font-size:x-small;">(sovrastima<a href="#sovrastima">*</a>)</span></li>
+</ul>
 <input type="button" id="reset" value="Ricomincia" onclick="resetBudget();" />
+</div>
 </fieldset>
-
 </form>
+<script type="text/javascript">bimbiComuni();</script>
 
-<div style="font-size:small;">Dati: <a href="http://www.comune.bologna.it/news/come-fatta-la-scuola-dell-infanzia-bologna">Comune di Bologna</a> per il 2013. Retta media paritaria calcolata da <a href="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash3/945989_525119184203867_2136608247_n.png">relazione comunale 2011/12</a>, escludendo i due casi estremi (KinderHaus e SacroCuore).<br />
-<a name="sovrastima">*</a><span style="font-size:x-small">Il costo per bambino &egrave; sovrastimato del 15% circa per via di arrotondamenti sul dato aggregato fornito dal Comune.</span></div>
+<div id="notaDati">Fonti: 
+<ul><li><a href="http://www.comune.bologna.it/news/come-fatta-la-scuola-dell-infanzia-bologna">Comune di Bologna</a> per il 2013</li>
+<li>Retta media paritaria calcolata da <a href="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash3/945989_525119184203867_2136608247_n.png">relazione comunale 2011/12</a>, escludendo i due casi estremi (KinderHaus e SacroCuore).</li>
+<li><a name="sovrastima">*</a>Il costo per bambino &egrave; sovrastimato del 15% circa per via di arrotondamenti sul dato aggregato fornito dal Comune.</li>
+</ul>
+</div>
 
 <div id="disqus_thread"></div>
     <script type="text/javascript">

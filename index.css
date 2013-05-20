@@ -4,7 +4,8 @@ body {
 	background-position: top left;
 	margin:0; 
 	border:0; 
-	padding:20px; 
+	padding:20px;
+	padding-top: 5px;
 	font-family: Helvetica, Verdana, Arial, sans-serif;
 }
 h1 { 
@@ -14,26 +15,45 @@ h1 {
 	margin-bottom:0px; 
 	padding-bottom: 0px;
 }
-.intro { 
-	margin: 14px; 
-}
+a { color: #066; }
+a:hover { color: #4EB1B1;  }
+
 fieldset { 
 	margin:0; 
 	padding:10px; 
 	border-radius: 10px; 
 	border: solid 3px #4EB1B1; 
 }
-input { background-color: transparent;}
+input { background-color: transparent; display: inline; width: 100px;}
+ul { margin:0; padding:0; border:0;  }
+li { list-style-type: none; margin: 0.8em 0 0.8em 0;}
+.highlight { background-color: #ddf0f0; padding: 5px; }
+#intro { padding-top: 10px; }
+#instructions { font-size: small; } 
+
+#fields > ul { display: table; width: 100%;}
+#fields > ul > li { display: table-row;
+	border-bottom: solid 1px #066;
+	} 
+#fields > ul > li > label { display: table-cell; 
+	padding: 0.5em 0 0.5em 0;
+	text-align: right;
+	width: 40%;
+}
+
 #pariPerc, #euroPariLabel, #numComunali, #numComunaliVar, #numEsclusi, #euroRetta, #euroAmmanco, #percEsclusi, #costoPerBimbo  { 
 	border:0; padding:0; margin:0; 
 	text-align: right; 
 	font-family: Helvetica, Verdana, Arial, sans-serif; 
 	font-size: medium;
 }
-#euroRetta, #euroPariLabel, #percEsclusi, #numComunaliVar { 
-	text-align: right; 
-	width: 50px;
+
+#pariPerc, #percEsclusi, #numComunaliVar { 
+	text-align: left; 
+	width: auto;
 }
+
+#euroPariLabel { width: auto; }
 #reset { 
 	border: solid 2px #4EB1B1; 
 	border-radius: 5px; 
@@ -43,5 +63,33 @@ input { background-color: transparent;}
 	font-size: medium; 
 	font-weight: bold;
 	color: white;
+	padding: 0;
+	position: absolute;
+	float: top;
+	margin-right:20%;
+	margin-left: 15%;
+	width: 60%;
+	cursor: pointer;
 }
 #disqus_thread { margin-top: 15px; }
+
+#cta {
+	font-family: Lobster, Georgia, serif;
+	color: #066;
+}
+
+#browsers { margin:0; padding:0; border:0; 	
+	float: right; 
+	font-size: x-small; font-style: italic;
+	text-align: right;
+}
+
+div#notaDati > ul > li { 
+	list-style-type: circle;
+	font-size: small;
+	font-style: italic;
+	border: 0; padding: 0; margin:0;
+	margin-left: 2em;
+}
+
+
